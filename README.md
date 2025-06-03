@@ -22,6 +22,9 @@ Write the C Program using Linux Process API - pipe(), fifo()
 Testing the C Program for the desired output. 
 
 # PROGRAM:
+
+## C Program that illustrate communication between two process using unnamed pipes using Linux API system calls
+
 ```
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +44,7 @@ int main() {
     pipe(p2); 
     pid = fork(); 
 
-    if (pid == 0) {
+    if (pid == 0) { 
         // Child process - Server
         close(p1[1]); // Close write end of pipe1
         close(p2[0]); // Close read end of pipe2
@@ -92,21 +95,19 @@ void client(int wfd, int rfd) {
     // Read file contents from server
     n = read(rfd, buff, 2000);
     buff[n] = '\0';
-// Print file contents
+
+    // Print file contents
     write(1, buff, n);
-} 
+}
 ```
 
 
-
-
-
 ## OUTPUT
-![ex03 output](./img/ex03pipe1.png)
+
+![pipe](./img/ex3-pipe.png)
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
-``` bash
-#include <stdio.h>
+```c#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -195,9 +196,10 @@ void client() {
 ```
 
 
-## OUTPUT
-![OUTPUT](./img/ex03namedpipee.png)
 
+
+## OUTPUT
+![fifo](./img/ex3-fifo.png)
 
 # RESULT:
 The program is executed successfully.
